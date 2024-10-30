@@ -1,0 +1,30 @@
+{
+    "schemaVersion": 1,
+    "id": "mgui",
+    "version": "${version}",
+    "name": "mgui",
+    "description": "",
+    "authors": [
+        "MeiNanziiii"
+    ],
+    "contact": {
+        "sources": "https://github.com/MeiNanziiii/mgui"
+    },
+    "license": "LGPL-3.0",
+    "icon": "assets/mgui/icon.png",
+    "environment": "server",
+    "entrypoints": {
+
+    },
+    "mixins": [
+        "mgui.mixins.json"
+    ],
+    "depends": {
+        "minecraft": ">=${minecraft_version}"
+    },
+    "custom": {
+        "modmenu": {
+            "badges": [ "library" ]
+        }
+    }
+}
