@@ -14,7 +14,9 @@
     "icon": "assets/mgui/icon.png",
     "environment": "server",
     "entrypoints": {
-
+        "main": [
+            "ua.mei.mgui.impl.MGuiImpl"
+        ]
     },
     "mixins": [
         "mgui.mixins.json"

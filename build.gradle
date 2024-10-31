@@ -31,6 +31,8 @@ dependencies {
 
     modImplementation include("maven.modrinth:pfu:${pfu_version}")
     modImplementation include("eu.pb4:sgui:${sgui_version}")
+    modImplementation include("eu.pb4:polymer-core:${polymer_version}")
+    modImplementation include("eu.pb4:polymer-resource-pack:${polymer_version}")
 }
 
 processResources {
