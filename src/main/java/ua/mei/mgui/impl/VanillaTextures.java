@@ -1,12 +1,10 @@
 package ua.mei.mgui.impl;
 
-import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import ua.mei.mgui.api.font.GUITextureManager;
-import ua.mei.pfu.font.FontResourceManager;
-import ua.mei.pfu.font.provider.BitmapFontProvider;
+import ua.mei.pfu.api.font.FontResourceManager;
 
 import static ua.mei.mgui.impl.MGuiImpl.MOD_ID;
 
@@ -21,7 +19,7 @@ public class VanillaTextures {
     public static MutableText GENERIC_9X1;
 
     public static void load() {
-        MANAGER = FontResourceManager.create(MOD_ID, "vanilla");
+        MANAGER = FontResourceManager.create(MOD_ID, MOD_ID, "vanilla");
 
         GENERIC_9X6 = GUITextureManager.requestGui("gui/container/generic_9x6.png", MANAGER);
         GENERIC_9X5 = GUITextureManager.requestGui("gui/container/generic_9x5.png", MANAGER);
