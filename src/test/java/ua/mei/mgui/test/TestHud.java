@@ -21,9 +21,9 @@ public class TestHud extends ServerHud {
     public MutableText draw(HudDrawContext context) {
         firstElement.x = (int) Math.clamp(context.player.getX(), -256, 256);
         context.drawElement(firstElement);
-        // secondElement.x = -firstElement.x;
+        secondElement.x = -firstElement.x;
         context.drawElement(secondElement);
-        // thirdElement.x = firstElement.x;
+        thirdElement.x = firstElement.x;
         context.drawElement(thirdElement);
         return super.draw(context);
     }

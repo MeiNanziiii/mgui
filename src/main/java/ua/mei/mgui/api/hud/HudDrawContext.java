@@ -33,11 +33,13 @@ public class HudDrawContext {
 
             if (i != 0) {
                 HudElement previousElement = elements.get(i - 1);
-                text.append(element.glyph.spaceBefore(-previousElement.x - 1 - (previousElement.glyph.glyphWidth / 2 + element.glyph.glyphWidth / 2) + element.x));
+                text.append(element.glyph.formatter().spaceBefore(-previousElement.x - 1 - (previousElement.glyph.glyphWidth / 2 + element.glyph.glyphWidth / 2) + element.x).value);
             } else {
-                text.append(element.glyph.spaceBefore(element.x));
+                text.append(element.glyph.formatter().spaceBefore(element.x).value);
             }
         }
+
+        System.out.println(text);
 
         return text;
     }
