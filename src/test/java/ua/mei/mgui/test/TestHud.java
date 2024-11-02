@@ -12,16 +12,16 @@ public class TestHud extends ServerHud {
     public final HudElement thirdElement;
 
     public TestHud() {
-        this.firstElement = HudElement.create(this, "gui/sprite_0.png", 96);
+        this.firstElement = HudElement.create(this, "gui/sprite_2.png", 96);
         this.secondElement = HudElement.create(this, "gui/sprite_0.png", 64);
-        this.thirdElement = HudElement.create(this, "gui/sprite_0.png", 32);
+        this.thirdElement = HudElement.create(this, "gui/sprite_1.png", 32);
     }
 
     @Override
     public MutableText draw(HudDrawContext context) {
         firstElement.x = (int) Math.clamp(context.player.getX(), -256, 256);
         secondElement.x = -firstElement.x;
-        thirdElement.x = firstElement.x;
+        thirdElement.x = (int) Math.clamp(context.player.getY(), -256, 256);
         context.drawElement(firstElement);
         context.drawElement(secondElement);
         context.drawElement(thirdElement);

@@ -17,11 +17,11 @@ public abstract class ServerHud {
     }
 
     public void tick(MinecraftServer server) {
-        // if (server.getTicks() % 5 == 0) {
+        if (server.getTicks() % 5 == 0) {
             for (ServerPlayerEntity player : players) {
                 player.sendMessageToClient(draw(new HudDrawContext((player))), true);
             }
-        // }
+        }
     }
 
     public void show(ServerPlayerEntity player) {
