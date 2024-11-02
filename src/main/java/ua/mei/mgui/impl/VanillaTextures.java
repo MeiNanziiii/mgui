@@ -3,11 +3,13 @@ package ua.mei.mgui.impl;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
+import org.jetbrains.annotations.ApiStatus;
 import ua.mei.mgui.api.font.GUITextureManager;
 import ua.mei.pfu.api.font.FontResourceManager;
 
 import static ua.mei.mgui.impl.MGuiImpl.MOD_ID;
 
+@ApiStatus.Internal
 public class VanillaTextures {
     public static FontResourceManager MANAGER;
 

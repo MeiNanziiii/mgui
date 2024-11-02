@@ -1,0 +1,29 @@
+{
+    "schemaVersion": 1,
+    "id": "mgui_test",
+    "version": "1.0.0",
+    "name": "mgui test",
+    "description": "",
+    "authors": [
+        "MeiNanziiii"
+    ],
+    "contact": {
+        "sources": "https://github.com/MeiNanziiii/mgui"
+    },
+    "license": "LGPL-3.0",
+    "icon": "assets/mgui/icon.png",
+    "environment": "server",
+    "entrypoints": {
+        "main": [
+            "ua.mei.mgui.test.MGuiTest"
+        ]
+    },
+    "depends": {
+        "minecraft": "*"
+    },
+    "custom": {
+        "modmenu": {
+            "badges": [ "library" ]
+        }
+    }
+}

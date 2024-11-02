@@ -10,6 +10,22 @@ base {
     archivesName = project.archives_base_name
 }
 
+loom {
+    runs {
+        testClient {
+            client()
+            ideConfigGenerated project.rootProject == project
+            name = "Test Mod Client"
+            source sourceSets.test
+        }
+        testServer {
+            server()
+            ideConfigGenerated project.rootProject == project
+            name = "Test Mod Server"
+            source sourceSets.test
+        }
+    }
+}
 
 repositories {
     // Add repositories to retrieve artifacts from in here.
