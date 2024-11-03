@@ -3,7 +3,6 @@ package ua.mei.mgui.api.hud;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
-import ua.mei.mgui.api.font.HudElement;
 import ua.mei.pfu.api.font.TextFormatter;
 
 import java.util.ArrayList;
@@ -34,7 +33,7 @@ public class HudDrawContext {
             if (i != 0) {
                 HudElement firstElement = elements.getFirst();
 
-                text.append(formatter.spaceBefore(-element.glyph.glyphWidth - 1).offset(element.x - (firstElement.glyph.glyphWidth - element.glyph.glyphWidth) / 2).value);
+                text.append(formatter.spaceBefore(element.align.spaceBefore.apply(firstElement, element) - 1).offset(element.x + element.align.spaceAfter.apply(firstElement, element)).value);
             } else {
                 text.append(formatter.offset(element.x).value);
             }

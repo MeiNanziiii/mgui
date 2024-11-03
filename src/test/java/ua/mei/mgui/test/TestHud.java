@@ -1,7 +1,7 @@
 package ua.mei.mgui.test;
 
 import net.minecraft.text.MutableText;
-import ua.mei.mgui.api.font.HudElement;
+import ua.mei.mgui.api.hud.HudElement;
 import ua.mei.mgui.api.hud.HudDrawContext;
 import ua.mei.mgui.api.hud.ServerHud;
 import ua.mei.pfu.api.font.FontResourceManager;

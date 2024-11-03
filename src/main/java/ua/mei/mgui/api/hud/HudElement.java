@@ -1,6 +1,5 @@
-package ua.mei.mgui.api.font;
+package ua.mei.mgui.api.hud;
 
-import ua.mei.mgui.api.hud.ServerHud;
 import ua.mei.pfu.api.font.BitmapGlyph;
 
 @SuppressWarnings({"unused"})
@@ -9,6 +8,8 @@ public class HudElement {
 
     public final int y;
     public int x = 0;
+
+    public HudAlign align = HudAlign.LEFT;
 
     private HudElement(BitmapGlyph glyph) {
         this.glyph = glyph;
