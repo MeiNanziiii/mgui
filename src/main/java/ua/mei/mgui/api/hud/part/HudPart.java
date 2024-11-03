@@ -1,6 +1,8 @@
-package ua.mei.mgui.api.hud;
+package ua.mei.mgui.api.hud.part;
 
 import net.minecraft.text.MutableText;
+import ua.mei.mgui.api.hud.HudAlign;
+import ua.mei.mgui.api.hud.ServerHud;
 
 @SuppressWarnings({"unchecked"})
 public abstract class HudPart<T extends HudPart<T>> {

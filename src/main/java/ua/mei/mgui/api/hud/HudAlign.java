@@ -1,5 +1,7 @@
 package ua.mei.mgui.api.hud;
 
+import ua.mei.mgui.api.hud.part.HudPart;
+
 @SuppressWarnings({"unused"})
 public enum HudAlign {
     LEFT(

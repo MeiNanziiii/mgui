@@ -1,9 +1,9 @@
 package ua.mei.mgui.test;
 
-import ua.mei.mgui.api.hud.GlyphPart;
 import ua.mei.mgui.api.hud.HudAlign;
-import ua.mei.mgui.api.hud.HudGroup;
 import ua.mei.mgui.api.hud.ServerHud;
+import ua.mei.mgui.api.hud.part.GlyphPart;
+import ua.mei.mgui.api.hud.part.HudGroup;
 import ua.mei.pfu.api.font.FontResourceManager;
 
 public class TestHud extends ServerHud {
@@ -46,11 +46,6 @@ public class TestHud extends ServerHud {
 
         root.addPart(group);
         root.xOffset(-128);
-    }
-
-    @Override
-    public void draw() {
-
     }
 
     @Override

@@ -1,48 +1,29 @@
 package ua.mei.mgui.api.hud;
 
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Text;
+import ua.mei.mgui.api.hud.part.HudGroup;
+import ua.mei.mgui.impl.ServerHudRenderer;
 import ua.mei.pfu.api.font.FontResourceManager;
-import ua.mei.pfu.api.font.TextFormatter;
 
-import java.util.ArrayList;
-import java.util.List;
-
+@SuppressWarnings({"unused"})
 public abstract class ServerHud {
-    public final HudGroup root = new HudGroup(this, List.of());
-    private final List<ServerPlayerEntity> players = new ArrayList<>();
+    public final HudGroup root = HudGroup.empty(this);
 
-    public abstract void draw();
+    public void update(ServerPlayerEntity player) {
+    }
 
-    public void tick(MinecraftServer server) {
-        if (server.getTicks() % 5 == 0) {
-            draw();
-
-            for (ServerPlayerEntity player : players) {
-                drawToPlayer(player);
-            }
+    public void tick(ServerPlayerEntity player) {
+        if (player.server.getTicks() % 5 == 0) {
+            update(player);
         }
     }
 
     public void show(ServerPlayerEntity player) {
-        players.add(player);
-        draw();
-        drawToPlayer(player);
+        ServerHudRenderer.addHud(player, this);
     }
 
     public void hide(ServerPlayerEntity player) {
-        players.remove(player);
-        player.sendMessageToClient(Text.empty(), true);
-    }
-
-    public void drawToPlayer(ServerPlayerEntity player) {
-        MutableText text = root.render();
-        if (root.xOffset != 0) {
-            text = new TextFormatter(text).offset(root.xOffset).value;
-        }
-        player.sendMessageToClient(text, true);
+        ServerHudRenderer.removeHud(player, this);
     }
 
     public abstract FontResourceManager getResourceManager();

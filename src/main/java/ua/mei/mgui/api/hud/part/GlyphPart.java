@@ -1,6 +1,7 @@
-package ua.mei.mgui.api.hud;
+package ua.mei.mgui.api.hud.part;
 
 import net.minecraft.text.MutableText;
+import ua.mei.mgui.api.hud.ServerHud;
 import ua.mei.pfu.api.font.BitmapGlyph;
 
 @SuppressWarnings({"unused"})
