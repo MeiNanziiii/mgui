@@ -2,12 +2,14 @@ package ua.mei.mgui.api.hud;
 
 import net.minecraft.util.Identifier;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 public class ServerHudRegistry {
-    private static Map<Identifier, ServerHud> registeredHuds = new LinkedHashMap<>();
+    private static final Map<Identifier, ServerHud> registeredHuds = new LinkedHashMap<>();
 
     public static ServerHud register(Identifier identifier, Supplier<ServerHud> hudSupplier) {
         if (registeredHuds.containsKey(identifier)) {
