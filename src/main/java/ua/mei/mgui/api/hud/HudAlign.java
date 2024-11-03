@@ -3,16 +3,16 @@ package ua.mei.mgui.api.hud;
 @SuppressWarnings({"unused"})
 public enum HudAlign {
     LEFT(
-            (firstElement, element, context) -> -element.getWidth(context),
-            (firstElement, element, context) -> -firstElement.getWidth(context) + element.getWidth(context)
+            (firstPart, part) -> -part.getWidth(),
+            (firstPart, part) -> -firstPart.getWidth() + part.getWidth()
     ),
     CENTER(
-            (firstElement, element, context) -> -element.getWidth(context),
-            (firstElement, element, context) -> (firstElement.getWidth(context) - element.getWidth(context)) / -2
+            (firstPart, part) -> -part.getWidth(),
+            (firstPart, part) -> (firstPart.getWidth() - part.getWidth()) / -2
     ),
     RIGHT(
-            (firstElement, element, context) -> -element.getWidth(context),
-            (firstElement, element, context) -> 0
+            (firstPart, part) -> -part.getWidth(),
+            (firstPart, part) -> 0
     );
 
     public final HudAlignFunction spaceBefore;
@@ -25,6 +25,6 @@ public enum HudAlign {
 
     @FunctionalInterface
     public interface HudAlignFunction {
-        Integer apply(HudElement firstElement, HudElement element, HudDrawContext context);
+        Integer apply(HudPart<?> firstPart, HudPart<?> part);
     }
 }

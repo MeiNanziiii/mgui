@@ -1,34 +1,55 @@
 package ua.mei.mgui.test;
 
-import net.minecraft.text.MutableText;
+import ua.mei.mgui.api.hud.GlyphPart;
 import ua.mei.mgui.api.hud.HudAlign;
-import ua.mei.mgui.api.hud.HudElement;
-import ua.mei.mgui.api.hud.HudDrawContext;
+import ua.mei.mgui.api.hud.HudGroup;
 import ua.mei.mgui.api.hud.ServerHud;
 import ua.mei.pfu.api.font.FontResourceManager;
 
 public class TestHud extends ServerHud {
-    public final HudElement firstElement;
-    public final HudElement secondElement;
-    public final HudElement thirdElement;
-
     public TestHud() {
-        this.firstElement = HudElement.create(this, "gui/sprite_2.png", 96);
-        this.secondElement = HudElement.create(this, "gui/sprite_0.png", 64);
-        this.thirdElement = HudElement.create(this, "gui/sprite_1.png", 32);
+        HudGroup group = HudGroup.empty(this)
+                .addPart(GlyphPart.create(this, "gui/sprite_2.png", 192)
+                        .align(HudAlign.LEFT)
+                )
+                .addPart(HudGroup.empty(this)
+                        .addPart(GlyphPart.create(this, "gui/sprite_1.png", 164)
+                                .align(HudAlign.RIGHT)
+                        )
+                        .addPart(GlyphPart.create(this, "gui/sprite_0.png", 128))
 
-        this.firstElement.align = HudAlign.LEFT;
-        this.thirdElement.align = HudAlign.RIGHT;
+                )
+                .addPart(HudGroup.empty(this)
+                        .addPart(HudGroup.empty(this)
+                                .addPart(GlyphPart.create(this, "gui/sprite_1.png", 96))
+                                .addPart(GlyphPart.create(this, "gui/sprite_2.png", 64)
+                                        .align(HudAlign.LEFT)
+                                )
+                                .addPart(GlyphPart.create(this, "gui/sprite_2.png", 32)
+                                        .align(HudAlign.RIGHT)
+                                )
+                                .addPart(GlyphPart.create(this, "gui/sprite_2.png", 16))
+                                .xOffset(-64)
+                        )
+                        .addPart(HudGroup.empty(this)
+                                .addPart(GlyphPart.create(this, "gui/sprite_1.png", 96))
+                                .addPart(GlyphPart.create(this, "gui/sprite_2.png", 64)
+                                        .align(HudAlign.LEFT)
+                                )
+                                .addPart(GlyphPart.create(this, "gui/sprite_2.png", 32)
+                                        .align(HudAlign.RIGHT)
+                                )
+                                .addPart(GlyphPart.create(this, "gui/sprite_2.png", 16))
+                                .xOffset(64)
+                        )
+                );
+
+        root.addPart(group);
     }
 
     @Override
-    public void draw(HudDrawContext context) {
-        firstElement.x = (int) Math.clamp(context.player.getX(), -256, 256);
-        secondElement.x = -firstElement.x;
-        thirdElement.x = (int) Math.clamp(context.player.getY(), -256, 256);
-        context.drawElement(firstElement);
-        context.drawElement(secondElement);
-        context.drawElement(thirdElement);
+    public void draw() {
+
     }
 
     @Override

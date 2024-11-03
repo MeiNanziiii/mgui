@@ -9,12 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ServerHud {
+    public final HudGroup root = new HudGroup(this, List.of());
     private final List<ServerPlayerEntity> players = new ArrayList<>();
 
-    public abstract void draw(HudDrawContext context);
+    public abstract void draw();
 
     public void tick(MinecraftServer server) {
         if (server.getTicks() % 5 == 0) {
+            draw();
+
             for (ServerPlayerEntity player : players) {
                 drawToPlayer(player);
             }
@@ -23,6 +26,7 @@ public abstract class ServerHud {
 
     public void show(ServerPlayerEntity player) {
         players.add(player);
+        draw();
         drawToPlayer(player);
     }
 
@@ -32,9 +36,7 @@ public abstract class ServerHud {
     }
 
     public void drawToPlayer(ServerPlayerEntity player) {
-        HudDrawContext context = new HudDrawContext((player));
-        draw(context);
-        player.sendMessageToClient(context.draw(), true);
+        player.sendMessageToClient(root.render(), true);
     }
 
     public abstract FontResourceManager getResourceManager();
