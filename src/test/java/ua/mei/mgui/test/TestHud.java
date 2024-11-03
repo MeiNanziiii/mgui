@@ -45,6 +45,7 @@ public class TestHud extends ServerHud {
                 );
 
         root.addPart(group);
+        root.xOffset(-128);
     }
 
     @Override
