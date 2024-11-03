@@ -17,7 +17,6 @@ public class TestHud extends ServerHud {
                                 .align(HudAlign.RIGHT)
                         )
                         .addPart(GlyphPart.create(this, "gui/sprite_0.png", 128))
-
                 )
                 .addPart(HudGroup.empty(this)
                         .addPart(HudGroup.empty(this)

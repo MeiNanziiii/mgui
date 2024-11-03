@@ -7,14 +7,9 @@ import org.jetbrains.annotations.ApiStatus;
 
 @ApiStatus.Internal
 public class MGuiImpl implements ModInitializer {
-    public static final String MOD_ID = "mgui";
-    public static final boolean GUI_ENABLED = false;
-
     @Override
     public void onInitialize() {
         PolymerResourcePackUtils.addModAssets("mgui");
-
-        VanillaTextures.load();
 
         ServerTickEvents.END_SERVER_TICK.register(ServerHudRenderer::updateAllPlayers);
     }

@@ -22,7 +22,6 @@ public class MGuiTest implements ModInitializer {
         hud2 = ServerHudRegistry.register(Identifier.of("mgui_test:test_hud_2"), YetAnotherTestHud::new);
         hud = ServerHudRegistry.register(Identifier.of("mgui_test:test_hud"), TestHud::new);
 
-
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             hud.show(handler.player);
             hud2.show(handler.player);

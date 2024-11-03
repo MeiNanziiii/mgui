@@ -17,15 +17,13 @@ public class ServerHudRegistry {
         ServerHud hud = hudSupplier.get();
         registeredHuds.put(identifier, hud);
 
-        registeredHuds = registeredHuds.entrySet()
+        registeredHuds.entrySet()
                 .stream()
                 .sorted(Map.Entry.<Identifier, ServerHud>comparingByValue(Comparator.comparingInt(h -> h.root.getWidth())).reversed())
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        Map.Entry::getValue,
-                        (e1, e2) -> e1,
-                        LinkedHashMap::new
-                ));
+                .forEachOrdered(entry -> {
+                    registeredHuds.remove(entry.getKey());
+                    registeredHuds.put(entry.getKey(), entry.getValue());
+                });
 
         return hud;
     }
