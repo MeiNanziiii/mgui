@@ -1,26 +1,30 @@
 package ua.mei.mgui.api.hud;
 
-import java.util.function.BiFunction;
-
+@SuppressWarnings({"unused"})
 public enum HudAlign {
     LEFT(
-            (firstElement, element) -> -element.glyph.glyphWidth,
-            (firstElement, element) -> -(firstElement.glyph.glyphWidth - element.glyph.glyphWidth)
+            (firstElement, element, context) -> -element.getWidth(context),
+            (firstElement, element, context) -> -firstElement.getWidth(context) + element.getWidth(context)
     ),
     CENTER(
-            (firstElement, element) -> -element.glyph.glyphWidth,
-            (firstElement, element) -> -((firstElement.glyph.glyphWidth - element.glyph.glyphWidth) / 2)
+            (firstElement, element, context) -> -element.getWidth(context),
+            (firstElement, element, context) -> (firstElement.getWidth(context) - element.getWidth(context)) / -2
     ),
     RIGHT(
-            (firstElement, element) -> -element.glyph.glyphWidth,
-            (firstElement, element) -> 0
+            (firstElement, element, context) -> -element.getWidth(context),
+            (firstElement, element, context) -> 0
     );
 
-    public final BiFunction<HudElement, HudElement, Integer> spaceBefore;
-    public final BiFunction<HudElement, HudElement, Integer> spaceAfter;
+    public final HudAlignFunction spaceBefore;
+    public final HudAlignFunction offset;
 
-    HudAlign(BiFunction<HudElement, HudElement, Integer> spaceBefore, BiFunction<HudElement, HudElement, Integer> spaceAfter) {
+    HudAlign(HudAlignFunction spaceBefore, HudAlignFunction offset) {
         this.spaceBefore = spaceBefore;
-        this.spaceAfter = spaceAfter;
+        this.offset = offset;
+    }
+
+    @FunctionalInterface
+    public interface HudAlignFunction {
+        Integer apply(HudElement firstElement, HudElement element, HudDrawContext context);
     }
 }

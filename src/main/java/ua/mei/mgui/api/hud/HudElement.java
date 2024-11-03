@@ -5,11 +5,10 @@ import ua.mei.pfu.api.font.BitmapGlyph;
 @SuppressWarnings({"unused"})
 public class HudElement {
     public final BitmapGlyph glyph;
-
     public final int y;
-    public int x = 0;
 
-    public HudAlign align = HudAlign.LEFT;
+    public HudAlign align = HudAlign.CENTER;
+    public int x = 0;
 
     private HudElement(BitmapGlyph glyph) {
         this.glyph = glyph;
@@ -22,5 +21,9 @@ public class HudElement {
 
     public static HudElement create(ServerHud hud, String path, int height, int y) {
         return new HudElement(hud.getResourceManager().requestGlyph(path, height, y - 64));
+    }
+
+    public int getWidth(HudDrawContext context) {
+        return this.glyph.glyphWidth;
     }
 }

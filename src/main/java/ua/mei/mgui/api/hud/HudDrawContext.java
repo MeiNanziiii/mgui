@@ -33,7 +33,7 @@ public class HudDrawContext {
             if (i != 0) {
                 HudElement firstElement = elements.getFirst();
 
-                text.append(formatter.spaceBefore(element.align.spaceBefore.apply(firstElement, element) - 1).offset(element.x + element.align.spaceAfter.apply(firstElement, element)).value);
+                text.append(formatter.spaceBefore(element.align.spaceBefore.apply(firstElement, element, this) - 1).offset(element.x + element.align.offset.apply(firstElement, element, this)).value);
             } else {
                 text.append(formatter.offset(element.x).value);
             }
