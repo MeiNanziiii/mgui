@@ -11,8 +11,9 @@ public class YetAnotherTestHud extends ServerHud {
 
     public YetAnotherTestHud() {
         ticks = NumberPart.create(this, 8);
+        ticks.xOffset(96).align(HudAlign.LEFT);
 
-        root.addPart(ticks).align(HudAlign.LEFT).xOffset(96);
+        root.addPart(ticks);
     }
 
     @Override
