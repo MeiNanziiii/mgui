@@ -57,7 +57,7 @@ public class HudGroup extends HudPart<HudGroup> {
             }
         }
 
-        return new TextFormatter(text).offset(this.xOffset).value;
+        return text;
     }
 
     @Override
