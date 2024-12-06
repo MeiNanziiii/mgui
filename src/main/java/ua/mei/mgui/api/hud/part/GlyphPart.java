@@ -23,7 +23,7 @@ public class GlyphPart extends HudPart<GlyphPart> {
     }
 
     public static GlyphPart create(ServerHud hud, String path, int height, int y) {
-        BitmapGlyph glyph = hud.getResourceManager().requestGlyph(path, y - 64);
+        BitmapGlyph glyph = hud.getResourceManager().requestGlyph(path, height, y - 64);
         return new GlyphPart(hud, glyph);
     }
 
