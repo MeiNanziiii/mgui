@@ -34,7 +34,7 @@ public class ServerHudRenderer {
                     hudGroup.addPart(hud.root);
                 });
 
-        player.sendMessageToClient(hudGroup.render(), true);
+        player.sendMessageToClient(hudGroup.render().styled(style -> style.withShadowColor(0x0)), true);
     }
 
     public static void updateAllPlayers(MinecraftServer server) {
