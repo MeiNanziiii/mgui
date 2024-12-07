@@ -3,7 +3,7 @@ package ua.mei.mgui.api.hud;
 import net.minecraft.server.network.ServerPlayerEntity;
 import ua.mei.mgui.api.hud.part.HudGroup;
 import ua.mei.mgui.impl.ServerHudRenderer;
-import ua.mei.pfu.api.font.FontResourceManager;
+import ua.mei.pfu.api.FontResource;
 
 @SuppressWarnings({"unused"})
 public abstract class ServerHud {
@@ -26,5 +26,5 @@ public abstract class ServerHud {
         ServerHudRenderer.removeHud(player, this);
     }
 
-    public abstract FontResourceManager getResourceManager();
+    public abstract FontResource getResource();
 }

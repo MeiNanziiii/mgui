@@ -4,7 +4,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import ua.mei.mgui.api.hud.HudAlign;
 import ua.mei.mgui.api.hud.ServerHud;
 import ua.mei.mgui.api.hud.part.NumberPart;
-import ua.mei.pfu.api.font.FontResourceManager;
+import ua.mei.pfu.api.FontResource;
 
 public class YetAnotherTestHud extends ServerHud {
     public final NumberPart ticks;
@@ -27,7 +27,7 @@ public class YetAnotherTestHud extends ServerHud {
     }
 
     @Override
-    public FontResourceManager getResourceManager() {
-        return MGuiTest.manager;
+    public FontResource getResource() {
+        return MGuiTest.manager.requestFont("hud/test_2");
     }
 }

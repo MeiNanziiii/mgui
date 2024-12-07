@@ -3,7 +3,7 @@ package ua.mei.mgui.api.hud.part;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import ua.mei.mgui.api.hud.ServerHud;
-import ua.mei.pfu.api.font.TextFormatter;
+import ua.mei.pfu.api.util.TextFormatter;
 
 import java.util.ArrayList;
 import java.util.List;

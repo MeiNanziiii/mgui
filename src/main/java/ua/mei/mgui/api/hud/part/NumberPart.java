@@ -1,14 +1,15 @@
 package ua.mei.mgui.api.hud.part;
 
 import ua.mei.mgui.api.hud.ServerHud;
-import ua.mei.pfu.api.font.FontResourceManager;
+import ua.mei.mgui.impl.MGuiImpl;
+import ua.mei.pfu.api.FontResource;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class NumberPart extends HudGroup {
-    public static final FontResourceManager manager = FontResourceManager.create("mgui", "mgui", "numbers");
+    public static final FontResource resource = MGuiImpl.manager.requestFont("numbers");
 
     public final Map<Character, GlyphPart> glyphs;
     public final int y;
@@ -19,9 +20,9 @@ public class NumberPart extends HudGroup {
         this.glyphs = new HashMap<>();
 
         for (int i = 0; i < 10; i++) {
-            glyphs.put((char) ('0' + i), GlyphPart.create(hud, "hud/five/number_" + i + ".png", y, manager));
+            glyphs.put((char) ('0' + i), GlyphPart.create(hud, "hud/five/number_" + i + ".png", 128, y, resource));
         }
-        glyphs.put('-', GlyphPart.create(hud, "hud/five/number_minus.png", y, manager));
+        glyphs.put('-', GlyphPart.create(hud, "hud/five/number_minus.png", 128, y, resource));
 
         this.y = y;
 

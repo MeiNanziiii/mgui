@@ -5,13 +5,11 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import org.jetbrains.annotations.ApiStatus;
 import ua.mei.mgui.api.font.GUITextureManager;
-import ua.mei.pfu.api.font.FontResourceManager;
-
-import static ua.mei.mgui.impl.MGuiImpl.MOD_ID;
+import ua.mei.pfu.api.FontResource;
 
 @ApiStatus.Internal
 public class VanillaTextures {
-    public static FontResourceManager MANAGER;
+    public static FontResource resource = MGuiImpl.manager.requestFont("gui/vanilla");
 
     public static MutableText GENERIC_9X6;
     public static MutableText GENERIC_9X5;
@@ -21,14 +19,12 @@ public class VanillaTextures {
     public static MutableText GENERIC_9X1;
 
     public static void load() {
-        MANAGER = FontResourceManager.create(MOD_ID, MOD_ID, "vanilla");
-
-        GENERIC_9X6 = GUITextureManager.requestGui("gui/container/generic_9x6.png", MANAGER);
-        GENERIC_9X5 = GUITextureManager.requestGui("gui/container/generic_9x5.png", MANAGER);
-        GENERIC_9X4 = GUITextureManager.requestGui("gui/container/generic_9x4.png", MANAGER);
-        GENERIC_9X3 = GUITextureManager.requestGui("gui/container/generic_9x3.png", MANAGER);
-        GENERIC_9X2 = GUITextureManager.requestGui("gui/container/generic_9x2.png", MANAGER);
-        GENERIC_9X1 = GUITextureManager.requestGui("gui/container/generic_9x1.png", MANAGER);
+        GENERIC_9X6 = GUITextureManager.requestGui("gui/container/generic_9x6.png", resource);
+        GENERIC_9X5 = GUITextureManager.requestGui("gui/container/generic_9x5.png", resource);
+        GENERIC_9X4 = GUITextureManager.requestGui("gui/container/generic_9x4.png", resource);
+        GENERIC_9X3 = GUITextureManager.requestGui("gui/container/generic_9x3.png", resource);
+        GENERIC_9X2 = GUITextureManager.requestGui("gui/container/generic_9x2.png", resource);
+        GENERIC_9X1 = GUITextureManager.requestGui("gui/container/generic_9x1.png", resource);
     }
 
     public static MutableText fromScreenHandler(ScreenHandlerType<?> handler) {
