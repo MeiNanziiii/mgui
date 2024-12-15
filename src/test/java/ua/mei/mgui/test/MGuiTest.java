@@ -17,6 +17,8 @@ public class MGuiTest implements ModInitializer {
 
         manager = FontResourceManager.create("mgui_test");
 
+        TestGui.texture.render();
+
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(LiteralArgumentBuilder.<ServerCommandSource>literal("test_gui")
                     .requires(player -> player.hasPermissionLevel(4))

@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import ua.mei.mgui.impl.MGuiImpl;
-import ua.mei.mgui.impl.VanillaTextures;
+import ua.mei.mgui.api.gui.element.VanillaElements;
 import ua.mei.pfu.api.util.TextBuilder;
 
 @Mixin(OpenScreenS2CPacket.class)
@@ -26,8 +26,8 @@ public abstract class OpenScreenS2CPacketMixin {
         if (MGuiImpl.genericScreenHandlers.contains(this.screenHandlerId)) {
             cir.setReturnValue(
                     new TextBuilder()
-                            .text(VanillaTextures.fromScreenHandler(this.screenHandlerId).formatted(Formatting.WHITE))
-                            .text((MutableText) this.name)
+                            .text(((MutableText) VanillaElements.fromScreenHandler(this.screenHandlerId)).formatted(Formatting.WHITE))
+                            .text(this.name)
                             .build()
             );
         }

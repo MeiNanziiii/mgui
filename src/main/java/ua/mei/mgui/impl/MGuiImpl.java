@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 import org.jetbrains.annotations.ApiStatus;
+import ua.mei.mgui.api.gui.element.VanillaElements;
 import ua.mei.pfu.api.FontResourceManager;
 import ua.mei.pfu.api.util.FontSpaceUtils;
 
@@ -27,6 +28,6 @@ public class MGuiImpl implements ModInitializer {
     public void onInitialize() {
         PolymerResourcePackUtils.addModAssets(MOD_ID);
         FontSpaceUtils.requestRange(-256, 256);
-        VanillaTextures.load();
+        VanillaElements.load();
     }
 }
