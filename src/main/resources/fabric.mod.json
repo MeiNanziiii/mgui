@@ -21,8 +21,9 @@
     "mixins": [
         "mgui.mixins.json"
     ],
+    "accesswidener": "mgui.accesswidener",
     "depends": {
-        "minecraft": ">=${minecraft_version}"
+        "minecraft": ">=1.21.4"
     },
     "custom": {
         "modmenu": {

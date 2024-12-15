@@ -4,7 +4,8 @@
     "package": "ua.mei.mgui.mixin",
     "compatibilityLevel": "JAVA_21",
     "mixins": [
-        "ServerPlayerEntityMixin"
+        "OpenScreenS2CPacketMixin",
+        "SimpleGuiAccessor"
     ],
     "injectors": {
         "defaultRequire": 1

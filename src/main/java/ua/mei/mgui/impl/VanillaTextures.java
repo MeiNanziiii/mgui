@@ -9,22 +9,17 @@ import ua.mei.pfu.api.FontResource;
 
 @ApiStatus.Internal
 public class VanillaTextures {
-    public static FontResource resource = MGuiImpl.manager.requestFont("gui/vanilla");
+    private static final FontResource resource = MGuiImpl.manager.requestFont("gui/vanilla");
 
-    public static MutableText GENERIC_9X6;
-    public static MutableText GENERIC_9X5;
-    public static MutableText GENERIC_9X4;
-    public static MutableText GENERIC_9X3;
-    public static MutableText GENERIC_9X2;
-    public static MutableText GENERIC_9X1;
+    public static final MutableText GENERIC_9X1 = GUITextureManager.requestGui("gui/container/generic_9x1.png", resource);
+    public static final MutableText GENERIC_9X2 = GUITextureManager.requestGui("gui/container/generic_9x2.png", resource);
+    public static final MutableText GENERIC_9X3 = GUITextureManager.requestGui("gui/container/generic_9x3.png", resource);
+    public static final MutableText GENERIC_9X4 = GUITextureManager.requestGui("gui/container/generic_9x4.png", resource);
+    public static final MutableText GENERIC_9X5 = GUITextureManager.requestGui("gui/container/generic_9x5.png", resource);
+    public static final MutableText GENERIC_9X6 = GUITextureManager.requestGui("gui/container/generic_9x6.png", resource);
 
-    public static void load() {
-        GENERIC_9X6 = GUITextureManager.requestGui("gui/container/generic_9x6.png", resource);
-        GENERIC_9X5 = GUITextureManager.requestGui("gui/container/generic_9x5.png", resource);
-        GENERIC_9X4 = GUITextureManager.requestGui("gui/container/generic_9x4.png", resource);
-        GENERIC_9X3 = GUITextureManager.requestGui("gui/container/generic_9x3.png", resource);
-        GENERIC_9X2 = GUITextureManager.requestGui("gui/container/generic_9x2.png", resource);
-        GENERIC_9X1 = GUITextureManager.requestGui("gui/container/generic_9x1.png", resource);
+    protected static void load() {
+
     }
 
     public static MutableText fromScreenHandler(ScreenHandlerType<?> handler) {
