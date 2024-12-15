@@ -11,9 +11,11 @@ import ua.mei.mgui.api.gui.element.Elements;
 import ua.mei.mgui.api.gui.element.GuiElement;
 import ua.mei.mgui.api.gui.element.VanillaElements;
 import ua.mei.mgui.test.MGuiTest;
+import ua.mei.pfu.api.FontResource;
 
 public class TestGui extends TexturedGui {
-    public static final GuiElement texture = Elements.texture("gui/test.png", 64, 0, MGuiTest.manager.requestFont("test_gui"));;
+    public static final FontResource resource = MGuiTest.manager.requestFont("test_gui");
+    public final GuiElement texture = Elements.texture("gui/test.png", 64, 0, resource);
 
     public TestGui(ServerPlayerEntity player) {
         super(ScreenHandlerType.GENERIC_9X3, player, false);
