@@ -4,8 +4,7 @@
     "package": "ua.mei.mgui.mixin",
     "compatibilityLevel": "JAVA_21",
     "mixins": [
-        "OpenScreenS2CPacketMixin",
-        "SimpleGuiAccessor"
+        "OpenScreenS2CPacketMixin"
     ],
     "injectors": {
         "defaultRequire": 1

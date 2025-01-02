@@ -3,6 +3,7 @@ package ua.mei.mgui.api.gui;
 import eu.pb4.sgui.api.gui.SimpleGui;
 import eu.pb4.sgui.virtual.SguiScreenHandlerFactory;
 import eu.pb4.sgui.virtual.inventory.VirtualScreenHandler;
+import net.minecraft.network.packet.s2c.play.OpenScreenS2CPacket;
 import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
@@ -10,40 +11,46 @@ import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import ua.mei.mgui.impl.packet.MGuiOpenScreenPacket;
-import ua.mei.mgui.mixin.SimpleGuiAccessor;
+import org.jetbrains.annotations.Nullable;
+import ua.mei.mgui.impl.MGuiDrawContext;
 
 import java.util.OptionalInt;
 
 public abstract class TexturedGui extends SimpleGui {
-    public Text customText = Text.empty();
+    public @Nullable Text customTitle;
+    private @Nullable Text mguiTitle;
 
     public TexturedGui(ScreenHandlerType<GenericContainerScreenHandler> type, ServerPlayerEntity player, boolean manipulatePlayerSlots) {
         super(type, player, manipulatePlayerSlots);
     }
 
-    public abstract void drawGui(GuiDrawContext context);
+    public abstract void draw(MGuiDrawContext context);
 
     @Override
     public void setTitle(Text title) {
-        ((SimpleGuiAccessor) this).titleSet(title);
+        this.mguiTitle = title;
 
         if (this.isOpen()) {
-            this.player.networkHandler.connection.send(new MGuiOpenScreenPacket(this.syncId, this.type, title));
+            this.player.networkHandler.sendPacket(new OpenScreenS2CPacket(this.syncId, this.type, title) {
+                @Override
+                public Text getName() {
+                    return title;
+                }
+            });
             this.screenHandler.syncState();
         }
     }
 
     @Override
     public void onTick() {
-        GuiDrawContext context = new GuiDrawContext();
+        MGuiDrawContext context = new MGuiDrawContext();
 
-        drawGui(context);
+        draw(context);
 
-        Text text = context.render(this);
+        Text title = context.render(this);
 
-        if (this.isOpen() && !text.equals(this.getTitle())) {
-            setTitle(text);
+        if (this.isOpen() && !title.equals(this.mguiTitle)) {
+            setTitle(title);
         }
     }
 
@@ -67,11 +74,19 @@ public abstract class TexturedGui extends SimpleGui {
                     this.player.sendMessage(Text.translatable("container.spectatorCantOpen").formatted(Formatting.RED), true);
                 }
             } else {
-                GuiDrawContext context = new GuiDrawContext();
+                MGuiDrawContext context = new MGuiDrawContext();
 
-                drawGui(context);
+                draw(context);
 
-                this.player.networkHandler.connection.send(new MGuiOpenScreenPacket(screenHandler.syncId, screenHandler.getType(), context.render(this)));
+                Text title = context.render(this);
+                this.mguiTitle = title;
+
+                this.player.networkHandler.sendPacket(new OpenScreenS2CPacket(screenHandler.syncId, screenHandler.getType(), title) {
+                    @Override
+                    public Text getName() {
+                        return title;
+                    }
+                });
                 this.player.onScreenHandlerOpened(screenHandler);
                 this.player.currentScreenHandler = screenHandler;
 

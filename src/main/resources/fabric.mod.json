@@ -21,7 +21,7 @@
     "mixins": [
         "mgui.mixins.json"
     ],
-    "accesswidener": "mgui.accesswidener",
+    "accessWidener": "mgui.accesswidener",
     "depends": {
         "minecraft": ">=1.21.4"
     },
