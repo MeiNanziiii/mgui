@@ -9,7 +9,7 @@ import ua.mei.mgui.api.gui.TexturedGui;
 import ua.mei.mgui.api.gui.element.GlyphElement;
 import ua.mei.mgui.api.gui.element.MGuiElement;
 import ua.mei.mgui.api.gui.element.VanillaElements;
-import ua.mei.mgui.impl.MGuiDrawContext;
+import ua.mei.mgui.api.gui.MGuiDrawContext;
 import ua.mei.mgui.test.MGuiTest;
 import ua.mei.pfu.api.FontResource;
 

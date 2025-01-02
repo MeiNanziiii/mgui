@@ -12,7 +12,6 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.jetbrains.annotations.Nullable;
-import ua.mei.mgui.impl.MGuiDrawContext;
 
 import java.util.OptionalInt;
 

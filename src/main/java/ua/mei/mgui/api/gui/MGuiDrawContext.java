@@ -1,17 +1,14 @@
-package ua.mei.mgui.impl;
+package ua.mei.mgui.api.gui;
 
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import org.jetbrains.annotations.ApiStatus;
-import ua.mei.mgui.api.gui.TexturedGui;
 import ua.mei.mgui.api.gui.element.MGuiElement;
 import ua.mei.pfu.api.util.TextBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@ApiStatus.Internal
 public class MGuiDrawContext {
     private final List<Object> elements = new ArrayList<>();
     private int x = 0;
